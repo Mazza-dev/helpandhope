@@ -1,17 +1,10 @@
 'use client';
 
 import {
-  Home as HomeIcon,
-  GraduationCap,
   Heart,
-  Globe,
+  Users,
   Leaf,
   Send,
-  ArrowRight,
-  Users,
-  School,
-  Home,
-  Globe2,
   Instagram,
   Facebook,
   Mail,
@@ -19,7 +12,7 @@ import {
 } from "lucide-react";
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 
 const fadeIn = {
@@ -85,13 +78,14 @@ const CounterAnimation: React.FC<CounterAnimationProps> = ({ value, duration = 2
 
 export default function HomePage() {
   const heroRef = useRef(null);
+  const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
+    target: targetRef,
+    offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0]);
 
   return (
     <main className="min-h-screen">
@@ -244,7 +238,7 @@ export default function HomePage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}>
             <Link href="#donate" className="bg-white text-blue-600 px-8 py-3 rounded-full hover:bg-opacity-90 transition inline-flex items-center gap-2">
-              Donate Now <ArrowRight className="w-5 h-5" />
+              Donate Now <Send className="w-5 h-5" />
             </Link>
           </motion.div>
         </motion.div>
@@ -311,7 +305,7 @@ export default function HomePage() {
               whileHover={{ scale: 1.05 }}
               className="bg-white rounded-xl shadow-lg p-6 transform hover:scale-105 transition duration-300">
               <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
-                <HomeIcon className="w-8 h-8 text-blue-600" />
+                <Users className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold text-blue-600 mb-4 text-center">Orphan Care</h3>
               <p className="text-gray-600 text-center">
@@ -326,7 +320,7 @@ export default function HomePage() {
               whileHover={{ scale: 1.05 }}
               className="bg-white rounded-xl shadow-lg p-6 transform hover:scale-105 transition duration-300">
               <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
-                <GraduationCap className="w-8 h-8 text-green-600" />
+                <Leaf className="w-8 h-8 text-green-600" />
               </div>
               <h3 className="text-xl font-semibold text-green-600 mb-4 text-center">Education</h3>
               <p className="text-gray-600 text-center">
@@ -356,7 +350,7 @@ export default function HomePage() {
               whileHover={{ scale: 1.05 }}
               className="bg-white rounded-xl shadow-lg p-6 transform hover:scale-105 transition duration-300">
               <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
-                <Globe className="w-8 h-8 text-purple-600" />
+                <Users className="w-8 h-8 text-purple-600" />
               </div>
               <h3 className="text-xl font-semibold text-purple-600 mb-4 text-center">Immigration Support</h3>
               <p className="text-gray-600 text-center">
@@ -422,7 +416,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative">
                   <div className="absolute inset-0 bg-blue-200 rounded-full blur-lg transform animate-pulse" />
-                  <HomeIcon className="w-10 h-10 text-blue-600 relative" />
+                  <Users className="w-10 h-10 text-blue-600 relative" />
                 </div>
                 <h2 className="text-4xl font-dancing-script text-blue-600">Orphan Care</h2>
               </div>
@@ -520,7 +514,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative">
                   <div className="absolute inset-0 bg-green-200 rounded-full blur-lg transform animate-pulse" />
-                  <GraduationCap className="w-10 h-10 text-green-600 relative" />
+                  <Leaf className="w-10 h-10 text-green-600 relative" />
                 </div>
                 <h2 className="text-4xl font-dancing-script text-green-600">Education</h2>
               </div>
