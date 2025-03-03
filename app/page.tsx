@@ -12,8 +12,8 @@ import {
 } from "lucide-react";
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
