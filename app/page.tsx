@@ -228,9 +228,9 @@ export default function HomePage() {
               </div>
               <p className="text-gray-600 leading-relaxed">
                 Help & Hope est une organisation à but non lucratif dédiée à créer un changement 
-                positif dans plusieurs secteurs de la société. Nous croyons en la force de l'action 
+                positif dans plusieurs secteurs de la société. Nous croyons en la force de l&apos;action 
                 collective et des solutions durables pour répondre aux défis les plus pressants 
-                auxquels nos communautés font face aujourd'hui.
+                auxquels nos communautés font face aujourd&apos;hui.
               </p>
               <div className="flex gap-6 mt-8">
                 <Heart className="w-8 h-8 text-blue-500/70" />
@@ -260,8 +260,8 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-blue-600">Notre Vision</h2>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                La vision de l'ONG est de contribuer à la construction d'un monde où toute personne 
-                puisse se satisfaire des besoins fondamentaux de base inhérents à l'être humain 
+                La vision de l&apos;ONG est de contribuer à la construction d&apos;un monde où toute personne 
+                puisse se satisfaire des besoins fondamentaux de base inhérents à l&apos;être humain 
                 sans trop de dépendances.
               </p>
               <div className="flex gap-6 mt-8">
@@ -303,7 +303,7 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Protection des Orphelins</h3>
               <p className="text-gray-600 leading-relaxed">
-                Nous nous engageons à donner de l'espoir aux enfants vulnérables, notamment les orphelins. 
+                Nous nous engageons à donner de l&apos;espoir aux enfants vulnérables, notamment les orphelins. 
                 En collaboration avec des partenaires locaux, nous développons des programmes de soutien pour 
                 améliorer leurs conditions de vie et leur offrir un avenir meilleur.
               </p>
@@ -328,8 +328,8 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Formation et Éducation</h3>
               <p className="text-gray-600 leading-relaxed">
-                Nous facilitons la scolarisation et l'accès aux kits scolaires et manuels pour les enfants défavorisés. 
-                Nos programmes éducatifs visent à créer des opportunités d'apprentissage durables et à améliorer les 
+                Nous facilitons la scolarisation et l&apos;accès aux kits scolaires et manuels pour les enfants défavorisés. 
+                Nos programmes éducatifs visent à créer des opportunités d&apos;apprentissage durables et à améliorer les 
                 conditions de vie de la couche juvénile.
               </p>
             </div>
@@ -354,7 +354,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Soins de Santé</h3>
               <p className="text-gray-600 leading-relaxed">
                 Nous offrons une assistance sociale et médicale aux couches défavorisées de la population. 
-                Nos initiatives de santé visent à améliorer l'accès aux soins essentiels et à promouvoir le 
+                Nos initiatives de santé visent à améliorer l&apos;accès aux soins essentiels et à promouvoir le 
                 bien-être des communautés les plus vulnérables.
               </p>
             </div>
@@ -376,9 +376,9 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Soutien à l'Immigration</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Soutien à l&apos;Immigration</h3>
               <p className="text-gray-600 leading-relaxed">
-                Nous travaillons pour l'intégration et l'insertion des personnes dans la sphère sociale, 
+                Nous travaillons pour l&apos;intégration et l&apos;insertion des personnes dans la sphère sociale, 
                 avec une attention particulière aux immigrants. Nos programmes offrent un accompagnement 
                 juridique et social pour faciliter leur adaptation.
               </p>
@@ -401,7 +401,7 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Protection de l'Environnement</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Protection de l&apos;Environnement</h3>
               <p className="text-gray-600 leading-relaxed">
                 Nous menons des initiatives écologiques visant à préserver notre environnement pour les 
                 générations futures. Nos programmes de sensibilisation encouragent le développement durable 
@@ -554,7 +554,7 @@ export default function HomePage() {
                   visible: { opacity: 1, y: 0, transition: { delay: 0.2 } }
                 }}>
                 <p className="text-lg text-gray-700 mb-6">
-                  Nous fournissons soutien, soins et amour aux enfants orphelins, en veillant à ce qu'ils aient accès à l'éducation,
+                  Nous fournissons soutien, soins et amour aux enfants orphelins, en veillant à ce qu&apos;ils aient accès à l&apos;éducation,
                   aux soins de santé et à un environnement propice à leur épanouissement. Nos programmes se concentrent sur:
                 </p>
                 <ul className="list-none space-y-3 text-gray-700">
@@ -698,7 +698,7 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-blue-600">Santé</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                L&apos;accès aux soins est un droit fondamental. Nous œuvrons pour la santé de tous.
+                L&apos;accès aux services de santé est primordial. Nous œuvrons pour améliorer l&apos;accès aux soins médicaux.
               </p>
               <ul className="list-disc pl-5 space-y-2 text-gray-700">
                 <li>Services de santé primaires</li>
@@ -766,7 +766,7 @@ export default function HomePage() {
                   'Assistance juridique et plaidoyer',
                   'Programmes linguistiques et culturels',
                   'Formation professionnelle et placement',
-                  "Soutien à l'intégration communautaire"
+                  "Soutien à l&apos;intégration communautaire"
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -954,7 +954,7 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-dancing-script mb-4">Help & Hope</h3>
               <p className="text-gray-400">
-                Faire la différence dans la vie des personnes dans le besoin à travers l'éducation,
+                Faire la différence dans la vie des personnes dans le besoin à travers l&apos;éducation,
                 la santé et le soutien communautaire.
               </p>
             </div>
