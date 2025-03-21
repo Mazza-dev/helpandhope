@@ -9,46 +9,22 @@ import {
   Facebook,
   Mail,
   Menu,
-  Book,
   Globe,
   Award,
   Info,
   Target,
   Lightbulb,
-  School,
-  HeartPulse,
-  Building2
+  Building2,
+  Phone
 } from "lucide-react";
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Phone } from "lucide-react";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5
-    }
-  }
 };
 
 export default function HomePage() {
@@ -346,7 +322,7 @@ export default function HomePage() {
               <div className="w-[88px] h-[88px] bg-gradient-to-br from-blue-100 to-blue-50 rounded-[1.5rem] 
                 flex items-center justify-center flex-shrink-0 relative
                 shadow-lg group-hover:shadow-blue-200/50 transition-shadow duration-500">
-                <Book className="w-[44px] h-[44px] text-blue-500" />
+                <Award className="w-[44px] h-[44px] text-blue-500" />
               </div>
             </div>
             <div>
@@ -467,7 +443,7 @@ export default function HomePage() {
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-gray-800">Fanta Fofana</h3>
                 <p className="text-blue-600 mb-2">CEO-President</p>
-                <p className="text-gray-600 italic">"An attitude of gratitude brings opportunities"</p>
+                <p className="text-gray-600 italic">&ldquo;An attitude of gratitude brings opportunities&rdquo;</p>
               </div>
             </motion.div>
 
@@ -491,7 +467,7 @@ export default function HomePage() {
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-gray-800">Nounké Kouyaté</h3>
                 <p className="text-blue-600 mb-2">Secretary General</p>
-                <p className="text-gray-600 italic">"Aider et Assister, me sont un sacerdoce"</p>
+                <p className="text-gray-600 italic">&ldquo;Aider et Assister, me sont un sacerdoce&rdquo;</p>
               </div>
             </motion.div>
 
@@ -515,7 +491,7 @@ export default function HomePage() {
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-gray-800">Ibrahim Bella Sow</h3>
                 <p className="text-blue-600 mb-2">CFO</p>
-                <p className="text-gray-600 italic">"Be the change you wish to see in the world"</p>
+                <p className="text-gray-600 italic">&ldquo;Be the change you wish to see in the world&rdquo;</p>
               </div>
             </motion.div>
 
@@ -539,7 +515,7 @@ export default function HomePage() {
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-gray-800">Cheick Oumar Keita</h3>
                 <p className="text-blue-600 mb-2">Supervisor/Recruiter</p>
-                <p className="text-gray-600 italic">"We all deserve to smile and together we can"</p>
+                <p className="text-gray-600 italic">&ldquo;We all deserve to smile and together we can&rdquo;</p>
               </div>
             </motion.div>
           </div>
@@ -557,7 +533,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-pattern-dots" />
         </div>
-        <div className="container mx-auto px-4 relative">
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-wrap items-center">
             <motion.div 
               variants={{
@@ -676,7 +652,7 @@ export default function HomePage() {
                   visible: { opacity: 1, y: 0, transition: { delay: 0.2 } }
                 }}>
                 <p className="text-lg text-gray-700 mb-6">
-                  À travers nos initiatives éducatives, nous donnons aux individus les moyens d'acquérir des connaissances et des compétences pour créer des opportunités d'avenir durables.
+                  L&apos;éducation est la clé du développement. Nous croyons en l&apos;importance d&apos;offrir des opportunités d&apos;apprentissage.
                 </p>
                 <ul className="list-none space-y-3 text-gray-700">
                   {[
@@ -722,7 +698,7 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-blue-600">Santé</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                Nous travaillons à améliorer l'accès aux services de santé et promouvons le bien-être à travers diverses initiatives médicales. Nos domaines d'intervention incluent :
+                L&apos;accès aux soins est un droit fondamental. Nous œuvrons pour la santé de tous.
               </p>
               <ul className="list-disc pl-5 space-y-2 text-gray-700">
                 <li>Services de santé primaires</li>
@@ -783,7 +759,7 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-purple-600">Immigration</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                Nous accompagnons les immigrants et les réfugiés avec une assistance juridique, des programmes d'intégration et des ressources pour faciliter leur adaptation dans leur nouvelle communauté.
+                L&apos;immigration doit être accompagnée. Nous guidons vers l&apos;intégration.
               </p>
               <ul className="list-none space-y-3 text-gray-700">
                 {[
@@ -831,7 +807,7 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-green-600">Environnement</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                Nous nous engageons à protéger notre planète à travers des actions de conservation, des initiatives de durabilité et des programmes d'éducation environnementale.
+                L&apos;environnement est notre responsabilité commune. Ensemble, nous pouvons créer un avenir durable.
               </p>
               <ul className="list-none space-y-3 text-gray-700">
                 {[
