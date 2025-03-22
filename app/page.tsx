@@ -411,6 +411,7 @@ export default function HomePage() {
           </motion.div>
         </div>
       </div>
+
       {/* Team Section */}
       <section className="py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="container mx-auto px-4">
@@ -423,7 +424,12 @@ export default function HomePage() {
             Notre Équipe
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+          >
             {/* CEO - President */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -542,7 +548,7 @@ export default function HomePage() {
                 <p className="text-gray-600 italic">&ldquo;Making them smile is part of my success&rdquo;</p>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
