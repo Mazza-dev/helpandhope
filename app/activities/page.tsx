@@ -4,8 +4,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Heart, Menu } from 'lucide-react';
+import { useState } from 'react';
 
 export default function ActivitiesPage() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -64,10 +67,59 @@ export default function ActivitiesPage() {
             </motion.div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors">
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors"
+            >
               <Menu className="w-6 h-6 text-gray-600" />
             </button>
           </div>
+
+          {/* Mobile Menu */}
+          <motion.div
+            initial="hidden"
+            animate={isMobileMenuOpen ? "visible" : "hidden"}
+            variants={{
+              hidden: { opacity: 0, height: 0 },
+              visible: { opacity: 1, height: "auto" }
+            }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden"
+          >
+            <nav className="py-4 flex flex-col gap-4">
+              {[
+                { href: '/', label: 'Accueil' },
+                { href: '/#orphans', label: 'Orphelins' },
+                { href: '/#education', label: 'Éducation' },
+                { href: '/#health', label: 'Santé' },
+                { href: '/#immigration', label: 'Immigration' },
+                { href: '/#environment', label: 'Environnement' },
+              ].map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-600 hover:text-blue-600 transition-colors px-4 py-2 hover:bg-gray-50 rounded-lg"
+                >
+                  {label}
+                </Link>
+              ))}
+              <div className="px-4 pt-2">
+                <Link
+                  href="https://helpandhope.gumroad.com/l/uhpiq"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2.5 rounded-full
+                    hover:shadow-lg hover:from-blue-500 hover:to-blue-600 transition-all duration-300
+                    flex items-center gap-2 font-medium w-full justify-center"
+                >
+                  <Heart className="w-4 h-4" />
+                  <span>Faire un Don</span>
+                </Link>
+              </div>
+            </nav>
+          </motion.div>
         </div>
 
         {/* Bottom Border Gradient */}
