@@ -552,6 +552,97 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Sponsors Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-dancing-script text-center text-blue-600 mb-12"
+          >
+            Nos Partenaires
+          </motion.h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center max-w-4xl mx-auto">
+            {/* GUINEA ENERGY */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center gap-3"
+            >
+              <div className="relative w-24 h-24 rounded-full bg-white shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <Image
+                  src="/sponsors/sponsor 1.jpg"
+                  alt="GUINEA ENERGY"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <p className="text-gray-700 font-medium text-sm text-center">GUINEA ENERGY</p>
+            </motion.div>
+
+            {/* Toogueda */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex flex-col items-center gap-3"
+            >
+              <div className="relative w-24 h-24 rounded-full bg-white shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <Image
+                  src="/sponsors/sponsor 2.jpg"
+                  alt="Toogueda"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <p className="text-gray-700 font-medium text-sm text-center">Toogueda</p>
+            </motion.div>
+
+            {/* UNICEF-Guinea */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col items-center gap-3"
+            >
+              <div className="relative w-24 h-24 rounded-full bg-white shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <Image
+                  src="/sponsors/sponsor 3.jpg"
+                  alt="UNICEF-Guinea"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <p className="text-gray-700 font-medium text-sm text-center">UNICEF-Guinea</p>
+            </motion.div>
+
+            {/* MEURS LIBRE PROD */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col items-center gap-3"
+            >
+              <div className="relative w-24 h-24 rounded-full bg-white shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <Image
+                  src="/sponsors/sponsor 4.jpg"
+                  alt="MEURS LIBRE PROD"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <p className="text-gray-700 font-medium text-sm text-center">MEURS LIBRE PROD</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Orphans Section */}
       <motion.section 
         initial="hidden"
@@ -872,60 +963,6 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-100/10 to-blue-50/10 mix-blend-multiply" />
               </div>
             </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Sponsors Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeIn}
-        className="relative py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-3 justify-center mb-16">
-            <Award className="w-10 h-10 text-blue-600" />
-            <h2 className="text-4xl font-dancing-script text-blue-600">Nos Partenaires</h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
-            {[
-              { name: 'UNICEF', logo: '/sponsors/unicef.png' },
-              { name: 'WHO', logo: '/sponsors/who.png' },
-              { name: 'Red Cross', logo: '/sponsors/red-cross.png' },
-              { name: 'UNESCO', logo: '/sponsors/unesco.png' },
-              { name: 'Doctors Without Borders', logo: '/sponsors/msf.png' },
-              { name: 'Save the Children', logo: '/sponsors/save-children.png' },
-              { name: 'World Food Programme', logo: '/sponsors/wfp.png' },
-              { name: 'UNHCR', logo: '/sponsors/unhcr.png' }
-            ].map((sponsor, index) => (
-              <motion.div
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, scale: 0.8 },
-                  visible: { 
-                    opacity: 1, 
-                    scale: 1,
-                    transition: { 
-                      delay: index * 0.1,
-                      type: "spring",
-                      stiffness: 100
-                    }
-                  }
-                }}
-                className="group relative w-40 h-40">
-                <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110">
-                  <Image
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/5 transition-colors duration-300 rounded-lg" />
-              </motion.div>
-            ))}
           </div>
         </div>
       </motion.section>
