@@ -227,10 +227,10 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-blue-600">À Propos</h2>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                Help & Hope est une organisation à but non lucratif dédiée à créer un changement 
-                positif dans plusieurs secteurs de la société. Nous croyons en la force de l&apos;action 
+                Help &amp; Hope est une organisation à but non lucratif dédiée à créer un changement 
+                positif dans plusieurs secteurs de la société. Nous croyons en la force de l&#39;action 
                 collective et des solutions durables pour répondre aux défis les plus pressants 
-                auxquels nos communautés font face aujourd&apos;hui.
+                auxquels nos communautés font face aujourd&#39;hui.
               </p>
               <div className="flex gap-6 mt-8">
                 <Heart className="w-8 h-8 text-blue-500/70" />
@@ -260,8 +260,8 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-blue-600">Notre Vision</h2>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                La vision de l&apos;ONG est de contribuer à la construction d&apos;un monde où toute personne 
-                puisse se satisfaire des besoins fondamentaux de base inhérents à l&apos;être humain 
+                La vision de l&#39;ONG est de contribuer à la construction d&#39;un monde où toute personne 
+                puisse se satisfaire des besoins fondamentaux de base inhérents à l&#39;être humain 
                 sans trop de dépendances.
               </p>
               <div className="flex gap-6 mt-8">
@@ -303,7 +303,7 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Protection des Orphelins</h3>
               <p className="text-gray-600 leading-relaxed">
-                Nous nous engageons à donner de l&apos;espoir aux enfants vulnérables, notamment les orphelins. 
+                Nous nous engageons à donner de l&#39;espoir aux enfants vulnérables, notamment les orphelins. 
                 En collaboration avec des partenaires locaux, nous développons des programmes de soutien pour 
                 améliorer leurs conditions de vie et leur offrir un avenir meilleur.
               </p>
@@ -328,8 +328,8 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Formation et Éducation</h3>
               <p className="text-gray-600 leading-relaxed">
-                Nous facilitons la scolarisation et l&apos;accès aux kits scolaires et manuels pour les enfants défavorisés. 
-                Nos programmes éducatifs visent à créer des opportunités d&apos;apprentissage durables et à améliorer les 
+                Nous facilitons la scolarisation et l&#39;accès aux kits scolaires et manuels pour les enfants défavorisés. 
+                Nos programmes éducatifs visent à créer des opportunités d&#39;apprentissage durables et à améliorer les 
                 conditions de vie de la couche juvénile.
               </p>
             </div>
@@ -354,7 +354,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Soins de Santé</h3>
               <p className="text-gray-600 leading-relaxed">
                 Nous offrons une assistance sociale et médicale aux couches défavorisées de la population. 
-                Nos initiatives de santé visent à améliorer l&apos;accès aux soins essentiels et à promouvoir le 
+                Nos initiatives de santé visent à améliorer l&#39;accès aux soins essentiels et à promouvoir le 
                 bien-être des communautés les plus vulnérables.
               </p>
             </div>
@@ -376,9 +376,9 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Soutien à l&apos;Immigration</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Soutien à l&#39;Immigration</h3>
               <p className="text-gray-600 leading-relaxed">
-                Nous travaillons pour l&apos;intégration et l&apos;insertion des personnes dans la sphère sociale, 
+                Nous travaillons pour l&#39;intégration et l&#39;insertion des personnes dans la sphère sociale, 
                 avec une attention particulière aux immigrants. Nos programmes offrent un accompagnement 
                 juridique et social pour faciliter leur adaptation.
               </p>
@@ -401,7 +401,7 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Protection de l&apos;Environnement</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Protection de l&#39;Environnement</h3>
               <p className="text-gray-600 leading-relaxed">
                 Nous menons des initiatives écologiques visant à préserver notre environnement pour les 
                 générations futures. Nos programmes de sensibilisation encouragent le développement durable 
@@ -518,6 +518,30 @@ export default function HomePage() {
                 <p className="text-gray-600 italic">&ldquo;We all deserve to smile and together we can&rdquo;</p>
               </div>
             </motion.div>
+
+            {/* Moussa Fode */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="group"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-lg mb-4 aspect-[3/4]">
+                <Image
+                  src="/team/team5.jpg"
+                  alt="Moussa Fode"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-gray-800">Moussa Fode</h3>
+                <p className="text-blue-600 mb-2">Co-Founder/VP</p>
+                <p className="text-gray-600 italic">&ldquo;Making them smile is part of my success&rdquo;</p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -554,7 +578,7 @@ export default function HomePage() {
                   visible: { opacity: 1, y: 0, transition: { delay: 0.2 } }
                 }}>
                 <p className="text-lg text-gray-700 mb-6">
-                  Nous fournissons soutien, soins et amour aux enfants orphelins, en veillant à ce qu&apos;ils aient accès à l&apos;éducation,
+                  Nous fournissons soutien, soins et amour aux enfants orphelins, en veillant à ce qu&#39;ils aient accès à l&#39;éducation,
                   aux soins de santé et à un environnement propice à leur épanouissement. Nos programmes se concentrent sur:
                 </p>
                 <ul className="list-none space-y-3 text-gray-700">
@@ -652,7 +676,7 @@ export default function HomePage() {
                   visible: { opacity: 1, y: 0, transition: { delay: 0.2 } }
                 }}>
                 <p className="text-lg text-gray-700 mb-6">
-                  L&apos;éducation est la clé du développement. Nous croyons en l&apos;importance d&apos;offrir des opportunités d&apos;apprentissage.
+                  L&#39;éducation est la clé du développement. Nous croyons en l&#39;importance d&#39;offrir des opportunités d&#39;apprentissage.
                 </p>
                 <ul className="list-none space-y-3 text-gray-700">
                   {[
@@ -698,7 +722,7 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-blue-600">Santé</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                L&apos;accès aux services de santé est primordial. Nous œuvrons pour améliorer l&apos;accès aux soins médicaux.
+                L&#39;accès aux services de santé est primordial. Nous œuvrons pour améliorer l&#39;accès aux soins médicaux.
               </p>
               <ul className="list-disc pl-5 space-y-2 text-gray-700">
                 <li>Services de santé primaires</li>
@@ -759,14 +783,14 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-purple-600">Immigration</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                L&apos;immigration doit être accompagnée. Nous guidons vers l&apos;intégration.
+                L&#39;immigration doit être accompagnée. Nous guidons vers l&#39;intégration.
               </p>
               <ul className="list-none space-y-3 text-gray-700">
                 {[
                   'Assistance juridique et plaidoyer',
                   'Programmes linguistiques et culturels',
                   'Formation professionnelle et placement',
-                  "Soutien à l&apos;intégration communautaire"
+                  "Soutien à l&#39;intégration communautaire"
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -807,7 +831,7 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-green-600">Environnement</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                L&apos;environnement est notre responsabilité commune. Ensemble, nous pouvons créer un avenir durable.
+                L&#39;environnement est notre responsabilité commune. Ensemble, nous pouvons créer un avenir durable.
               </p>
               <ul className="list-none space-y-3 text-gray-700">
                 {[
@@ -952,9 +976,9 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* About Column */}
             <div>
-              <h3 className="text-2xl font-dancing-script mb-4">Help & Hope</h3>
+              <h3 className="text-2xl font-dancing-script mb-4">Help &amp; Hope</h3>
               <p className="text-gray-400">
-                Faire la différence dans la vie des personnes dans le besoin à travers l&apos;éducation,
+                Faire la différence dans la vie des personnes dans le besoin à travers l&#39;éducation,
                 la santé et le soutien communautaire.
               </p>
             </div>
@@ -1032,7 +1056,7 @@ export default function HomePage() {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Help & Hope. Tous droits réservés.</p>
+            <p>&copy; {new Date().getFullYear()} Help &amp; Hope. Tous droits réservés.</p>
           </div>
         </div>
       </footer>
