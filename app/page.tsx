@@ -1069,15 +1069,22 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* About Column */}
-            <div>
-              <h3 className="text-2xl font-dancing-script mb-4">Help &amp; Hope</h3>
-              <p className="text-gray-400">
+            <div className="flex flex-col gap-6">
+              <div className="relative w-[320px] md:w-[600px] h-[100px] md:h-[160px] -ml-3">
+                <Image
+                  src="/logo.png"
+                  alt="Help & Hope Logo"
+                  fill
+                  className="object-contain object-left"
+                />
+              </div>
+              <p className="text-gray-400 text-lg">
                 Faire la différence dans la vie des personnes dans le besoin à travers l&#39;éducation,
                 la santé et le soutien communautaire.
               </p>
             </div>
 
-            {/* Quick Links */}
+            {/* Quick Links Column */}
             <div>
               <h3 className="text-xl font-semibold mb-4">Liens Rapides</h3>
               <ul className="space-y-2">
