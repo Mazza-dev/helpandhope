@@ -923,22 +923,18 @@ export default function HomePage() {
               </div>
             </div>
             <div className="w-full md:w-1/2 pl-8 order-1 md:order-2">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-purple-200 rounded-full blur-lg transform animate-pulse" />
-                  <Users className="w-10 h-10 text-purple-600 relative" />
-                </div>
+              <div className="mb-4">
                 <h2 className="text-4xl font-dancing-script text-purple-600">Immigration</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                L&#39;immigration doit être accompagnée. Nous guidons vers l&#39;intégration.
+                L'immigration doit être accompagnée. Nous guidons vers l'intégration.
               </p>
               <ul className="list-none space-y-3 text-gray-700">
                 {[
                   'Assistance juridique et plaidoyer',
                   'Programmes linguistiques et culturels',
                   'Formation professionnelle et placement',
-                  "Soutien à l&#39;intégration communautaire"
+                  "Soutien à l'intégration communautaire"
                 ].map((item, index) => (
                   <motion.li
                     key={index}
