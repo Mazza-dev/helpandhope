@@ -927,14 +927,14 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-purple-600">Immigration</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                L'immigration doit être accompagnée. Nous guidons vers l'intégration.
+                L&apos;immigration doit être accompagnée. Nous guidons vers l&apos;intégration.
               </p>
               <ul className="list-none space-y-3 text-gray-700">
                 {[
                   'Assistance juridique et plaidoyer',
                   'Programmes linguistiques et culturels',
                   'Formation professionnelle et placement',
-                  "Soutien à l'intégration communautaire"
+                  "Soutien à l&apos;intégration communautaire"
                 ].map((item, index) => (
                   <motion.li
                     key={index}
