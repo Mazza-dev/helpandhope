@@ -927,7 +927,7 @@ export default function HomePage() {
                 <h2 className="text-4xl font-dancing-script text-purple-600">Immigration</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                L&#39;immigration doit être accompagnée. Nous guidons vers l&#39;intégration.
+                Notre mission est de faciliter une intégration réussie pour tous.
               </p>
               <ul className="list-none space-y-3 text-gray-700">
                 {[
