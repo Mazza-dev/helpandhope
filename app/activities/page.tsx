@@ -80,7 +80,7 @@ export default function ActivitiesPage() {
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center gap-3 px-6 py-3 rounded-xl font-medium transition-all duration-300
                       ${activeTab === tab.id
-                        ? 'bg-gradient-to-br from-blue-600 to-blue-500 text-white shadow-lg transform scale-105'
+                        ? `bg-gradient-to-br ${colors.gradient} ${colors.text} shadow-lg ${colors.shadow} transform scale-105`
                         : 'bg-white text-gray-600 hover:bg-blue-50 hover:text-blue-600'
                       }`}
                   >
