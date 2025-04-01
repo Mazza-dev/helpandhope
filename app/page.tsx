@@ -2,13 +2,10 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
-  Info,
   Heart,
   Target,
   Users,
   Globe,
-  Lightbulb,
-  Building2,
   Phone,
   FileText,
   ArrowRight,
@@ -355,9 +352,9 @@ export default function HomePage() {
               <div className="space-y-6 text-gray-600 leading-relaxed">
                 <p>
                   Help & Hope est une organisation à but non lucratif dédiée à créer un changement 
-                  positif dans plusieurs secteurs de la société. Nous croyons en la force de l'action 
+                  positif dans plusieurs secteurs de la société. Nous croyons en la force de l&apos;action 
                   collective et des solutions durables pour répondre aux défis les plus pressants 
-                  auxquels nos communautés font face aujourd'hui.
+                  auxquels nos communautés font face aujourd&apos;hui.
                 </p>
 
                 <div>
@@ -365,7 +362,7 @@ export default function HomePage() {
                   <p>
                     Notre organisation est dirigée par une assemblée générale composée de membres dévoués, répartis à travers le monde, 
                     de la Guinée aux États-Unis, en passant par le Canada, la France, et plusieurs autres pays. Cette diversité 
-                    internationale enrichit notre perspective et renforce notre capacité d'action.
+                    internationale enrichit notre perspective et renforce notre capacité d&apos;action.
                   </p>
                 </div>
 
@@ -377,7 +374,7 @@ export default function HomePage() {
                   <ul className="list-disc list-inside mt-2 space-y-2 ml-4">
                     <li>Distribution de kits sanitaires dans les prisons</li>
                     <li>Fourniture de matériel scolaire aux orphelinats</li>
-                    <li>Organisation d'activités récréatives pour les enfants</li>
+                    <li>Organisation d&apos;activités récréatives pour les enfants</li>
                     <li>Soutien aux populations vulnérables</li>
                   </ul>
                 </div>
@@ -418,8 +415,8 @@ export default function HomePage() {
               
               <div className="space-y-6 text-gray-600 leading-relaxed">
                 <p>
-                  La vision de l'ONG est de contribuer à la construction d'un monde où toute personne 
-                  puisse se satisfaire des besoins fondamentaux de base inhérents à l'être humain 
+                  La vision de l&apos;ONG est de contribuer à la construction d&apos;un monde où toute personne 
+                  puisse se satisfaire des besoins fondamentaux de base inhérents à l&apos;être humain 
                   sans trop de dépendances.
                 </p>
 
@@ -429,10 +426,10 @@ export default function HomePage() {
                     Pour réaliser cette vision, nous nous engageons à :
                   </p>
                   <ul className="list-disc list-inside mt-2 space-y-2 ml-4">
-                    <li>Améliorer l'accès à l'éducation et à la formation professionnelle</li>
+                    <li>Améliorer l&apos;accès à l&apos;éducation et à la formation professionnelle</li>
                     <li>Renforcer les systèmes de santé et de protection sociale</li>
                     <li>Promouvoir la durabilité environnementale</li>
-                    <li>Favoriser l'inclusion sociale et la cohésion communautaire</li>
+                    <li>Favoriser l&apos;inclusion sociale et la cohésion communautaire</li>
                   </ul>
                 </div>
 
@@ -445,7 +442,7 @@ export default function HomePage() {
                     <li>Collaborative avec les communautés locales</li>
                     <li>Basée sur des partenariats stratégiques</li>
                     <li>Orientée vers des solutions durables</li>
-                    <li>Centrée sur l'autonomisation des bénéficiaires</li>
+                    <li>Centrée sur l&apos;autonomisation des bénéficiaires</li>
                   </ul>
                 </div>
               </div>
@@ -466,7 +463,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl font-dancing-script text-blue-600 mb-4">Notre Impact</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Chaque action compte, chaque vie touchée fait la différence. Découvrez l'impact de nos activités 
+              Chaque action compte, chaque vie touchée fait la différence. Découvrez l&apos;impact de nos activités 
               à travers les chiffres qui témoignent de notre engagement.
             </p>
           </motion.div>

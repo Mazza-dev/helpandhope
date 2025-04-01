@@ -155,7 +155,7 @@ export default function ActivitiesPage() {
 
                   <div className="space-y-4 text-gray-600">
                     <p className="leading-relaxed">
-                      Pendant la pandémie de COVID-19, l'ONG Help and Hope a identifié et soutenu une population vulnérable souvent négligée : les prisonniers. 
+                      Pendant la pandémie de COVID-19, l&apos;ONG Help and Hope a identifié et soutenu une population vulnérable souvent négligée : les prisonniers. 
                       Notre équipe a fourni des kits sanitaires essentiels comprenant désinfectants, masques, gants et autres équipements de protection.
                     </p>
                     
@@ -230,9 +230,9 @@ export default function ActivitiesPage() {
 
                   <div className="space-y-4 text-gray-600">
                     <p className="leading-relaxed">
-                      La première activité historique de Help and Hope, axée sur l'éducation des enfants orphelins et démunis. 
+                      La première activité historique de Help and Hope, axée sur l&apos;éducation des enfants orphelins et démunis. 
                       Distribution de manuels scolaires (français, histoire, géographie, sciences) et fournitures, accompagnée 
-                      d'une séance de lecture et remise de prix d'excellence.
+                      d&apos;une séance de lecture et remise de prix d&apos;excellence.
                     </p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -251,7 +251,7 @@ export default function ActivitiesPage() {
                           <li>Budget total: 27,000,000 GNF</li>
                           <li>Manuels et fournitures distribués</li>
                           <li>Partenariat: PAM, RTG</li>
-                          <li>Support du Ministère de l'Action Sociale</li>
+                          <li>Support du Ministère de l&apos;Action Sociale</li>
                         </ul>
                       </div>
                     </div>
@@ -308,9 +308,9 @@ export default function ActivitiesPage() {
 
                   <div className="space-y-4 text-gray-600">
                     <p className="leading-relaxed">
-                      Pour débuter l'année 2021, Help and Hope a organisé une journée de divertissement au Magic Parc. 
+                      Pour débuter l&apos;année 2021, Help and Hope a organisé une journée de divertissement au Magic Parc. 
                       Les enfants ont pu profiter des diverses attractions (balançoires, toboggans, jeux) sous la supervision 
-                      attentive des membres de l'ONG, assurant à la fois leur amusement et leur sécurité.
+                      attentive des membres de l&apos;ONG, assurant à la fois leur amusement et leur sécurité.
                     </p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -357,7 +357,7 @@ export default function ActivitiesPage() {
                       <Users className="w-16 h-16 text-purple-500" />
                     </div>
                   </div>
-                  <h3 className="text-3xl font-dancing-script text-purple-600 mb-2">Membres de l'Assemblée</h3>
+                  <h3 className="text-3xl font-dancing-script text-purple-600 mb-2">Membres de l&apos;Assemblée</h3>
                   <p className="text-gray-600">Les membres dévoués qui guident notre mission avec passion et détermination</p>
                 </div>
 
@@ -458,7 +458,7 @@ export default function ActivitiesPage() {
                   <div>
                     <h3 className="text-2xl font-semibold mb-4 text-gray-800">Actualité {index}</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Placeholder pour le contenu de l'actualité {index}
+                      Placeholder pour le contenu de l&apos;actualité {index}
                     </p>
                     <div className="mt-4 flex items-center text-sm text-gray-500">
                       <span className="mr-4">📅 Date</span>
