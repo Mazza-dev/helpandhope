@@ -1,169 +1,476 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Heart, Menu } from 'lucide-react';
-import { useState } from 'react';
+import { FileText, Image as ImageIcon, Newspaper, Download, Calendar, Users, MapPin, ArrowLeft } from 'lucide-react';
 
 export default function ActivitiesPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('summaries');
+
+  const tabs = [
+    { 
+      id: 'summaries', 
+      label: 'Résumés des Activités',
+      icon: FileText,
+      color: 'blue'
+    },
+    { 
+      id: 'album', 
+      label: 'Galerie de Photos',
+      icon: ImageIcon,
+      color: 'orange'
+    },
+    { 
+      id: 'news', 
+      label: 'Actualités',
+      icon: Newspaper,
+      color: 'green'
+    },
+  ];
+
+  const getTabColors = (color: string) => {
+    const colors = {
+      blue: {
+        bg: 'bg-blue-100',
+        gradient: 'from-blue-100 to-blue-50',
+        shadow: 'shadow-blue-200/50',
+        text: 'text-blue-500'
+      },
+      orange: {
+        bg: 'bg-orange-100',
+        gradient: 'from-orange-100 to-orange-50',
+        shadow: 'shadow-orange-200/50',
+        text: 'text-orange-500'
+      },
+      green: {
+        bg: 'bg-green-100',
+        gradient: 'from-green-100 to-green-50',
+        shadow: 'shadow-green-200/50',
+        text: 'text-green-500'
+      }
+    };
+    return colors[color as keyof typeof colors];
+  };
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-lg">
+    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      {/* Fixed Navigation Header */}
+      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg shadow-md border-b border-blue-100/50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-3">
-              <div className="relative">
-                <div className="absolute inset-0 bg-blue-200 rounded-full blur-md animate-pulse"></div>
-                <Image
-                  src="/logo.png"
-                  alt="Help & Hope Logo"
-                  width={150}
-                  height={40}
-                  className="object-contain relative"
-                  priority
-                />
-              </div>
-            </Link>
-
-            {/* Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
-              {[
-                { href: '/', label: 'Accueil' },
-                { href: '/#orphans', label: 'Orphelins' },
-                { href: '/#education', label: 'Éducation' },
-                { href: '/#health', label: 'Santé' },
-                { href: '/#immigration', label: 'Immigration' },
-                { href: '/#environment', label: 'Environnement' },
-              ].map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="text-gray-600 hover:text-blue-600 transition-colors relative group">
-                  {label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              ))}
-            </nav>
-
-            {/* Donate Button */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}>
-              <Link
-                href="https://helpandhope.gumroad.com/l/uhpiq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2.5 rounded-full
-                  hover:shadow-lg hover:from-blue-500 hover:to-blue-600 transition-all duration-300
-                  flex items-center gap-2 font-medium">
-                <Heart className="w-4 h-4" />
-                <span>Faire un Don</span>
+            <div className="flex items-center gap-6">
+              <Link 
+                href="/"
+                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                <span className="font-medium">Retour</span>
               </Link>
-            </motion.div>
-
-            {/* Mobile Menu Button */}
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors"
-            >
-              <Menu className="w-6 h-6 text-gray-600" />
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          <motion.div
-            initial="hidden"
-            animate={isMobileMenuOpen ? "visible" : "hidden"}
-            variants={{
-              hidden: { opacity: 0, height: 0 },
-              visible: { opacity: 1, height: "auto" }
-            }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden"
-          >
-            <nav className="py-4 flex flex-col gap-4">
-              {[
-                { href: '/', label: 'Accueil' },
-                { href: '/#orphans', label: 'Orphelins' },
-                { href: '/#education', label: 'Éducation' },
-                { href: '/#health', label: 'Santé' },
-                { href: '/#immigration', label: 'Immigration' },
-                { href: '/#environment', label: 'Environnement' },
-              ].map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-600 hover:text-blue-600 transition-colors px-4 py-2 hover:bg-gray-50 rounded-lg"
-                >
-                  {label}
-                </Link>
-              ))}
-              <div className="px-4 pt-2">
-                <Link
-                  href="https://helpandhope.gumroad.com/l/uhpiq"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2.5 rounded-full
-                    hover:shadow-lg hover:from-blue-500 hover:to-blue-600 transition-all duration-300
-                    flex items-center gap-2 font-medium w-full justify-center"
-                >
-                  <Heart className="w-4 h-4" />
-                  <span>Faire un Don</span>
-                </Link>
-              </div>
+              <h1 className="text-4xl font-dancing-script text-blue-600">Nos Activités</h1>
+            </div>
+            <nav className="flex space-x-4">
+              {tabs.map((tab) => {
+                const colors = getTabColors(tab.color);
+                const Icon = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center gap-3 px-6 py-3 rounded-xl font-medium transition-all duration-300
+                      ${activeTab === tab.id
+                        ? 'bg-gradient-to-br from-blue-600 to-blue-500 text-white shadow-lg transform scale-105'
+                        : 'bg-white text-gray-600 hover:bg-blue-50 hover:text-blue-600'
+                      }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
             </nav>
-          </motion.div>
+          </div>
         </div>
+      </div>
 
-        {/* Bottom Border Gradient */}
-        <div className="h-[2px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
-      </header>
-
-      {/* Content */}
-      <section className="py-32">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-4xl font-dancing-script text-blue-600 mb-4">Nos Activités</h1>
-            <p className="text-gray-600 text-lg">
-              Découvrez nos différentes initiatives et programmes
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-6xl mx-auto">
-            {[1, 2, 3, 4, 5, 6].map((num, index) => (
+      {/* Content Area */}
+      <div className="container mx-auto px-4 py-8">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="max-w-6xl mx-auto"
+        >
+          {/* Activity Summaries */}
+          {activeTab === 'summaries' && (
+            <div className="grid grid-cols-1 gap-8">
+              {/* Featured Activity - Prison Sanitation Program */}
               <motion.div
-                key={num}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="aspect-square relative overflow-hidden rounded-[2rem] 
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="col-span-1 flex flex-col md:flex-row gap-6 p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] 
                   shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(59,130,246,0.25)]
-                  transform hover:-translate-y-4 transition-all duration-500 group"
+                  transform hover:-translate-y-2 transition-all duration-500 group
+                  border border-white/50"
                 whileHover={{ scale: 1.02 }}
               >
-                <Image
-                  src={`/activities/activity${num}.jpg`}
-                  alt={`Activity ${num}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+                <div className="relative flex-shrink-0">
+                  <div className="absolute -inset-4 bg-blue-100 rounded-full opacity-50 blur-2xl group-hover:opacity-70 transition-opacity duration-500" />
+                  <div className="w-[120px] h-[120px] bg-gradient-to-br from-blue-100 to-blue-50 rounded-[2rem] 
+                    flex items-center justify-center relative
+                    shadow-lg group-hover:shadow-blue-200/50 transition-shadow duration-500">
+                    <FileText className="w-16 h-16 text-blue-500" />
+                  </div>
+                </div>
+                <div className="flex-grow">
+                  <div className="flex flex-wrap items-center gap-4 mb-4">
+                    <h3 className="text-2xl font-semibold text-gray-800">Distribution des Kits Sanitaires - Prison Centrale de Conakry</h3>
+                    <a 
+                      href="/activities/reports/Rapport Help and Hope Activity 1.pdf" 
+                      download
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full hover:bg-blue-100 transition-colors"
+                    >
+                      <Download className="w-4 h-4" />
+                      <span>Télécharger le Rapport</span>
+                    </a>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-4 mb-4 text-gray-600">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-5 h-5 text-blue-500" />
+                      <span>24 Avril 2020</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-5 h-5 text-blue-500" />
+                      <span>21 Membres</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-5 h-5 text-blue-500" />
+                      <span>Conakry, Guinée</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 text-gray-600">
+                    <p className="leading-relaxed">
+                      Pendant la pandémie de COVID-19, l'ONG Help and Hope a identifié et soutenu une population vulnérable souvent négligée : les prisonniers. 
+                      Notre équipe a fourni des kits sanitaires essentiels comprenant désinfectants, masques, gants et autres équipements de protection.
+                    </p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                      <div>
+                        <h4 className="font-semibold text-gray-800 mb-2">Impact</h4>
+                        <ul className="list-disc list-inside space-y-1">
+                          <li>Réduction des risques de contamination</li>
+                          <li>Protection des droits des prisonniers</li>
+                          <li>Soutien à une population vulnérable</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-800 mb-2">Ressources Mobilisées</h4>
+                        <ul className="list-disc list-inside space-y-1">
+                          <li>Budget total: 17,000,000 GNF</li>
+                          <li>Équipements sanitaires distribués</li>
+                          <li>Couverture médiatique RTG</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+              {/* Featured Activity - School Supplies Distribution */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="col-span-1 flex flex-col md:flex-row gap-6 p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] 
+                  shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(59,130,246,0.25)]
+                  transform hover:-translate-y-2 transition-all duration-500 group
+                  border border-white/50"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="relative flex-shrink-0">
+                  <div className="absolute -inset-4 bg-orange-100 rounded-full opacity-50 blur-2xl group-hover:opacity-70 transition-opacity duration-500" />
+                  <div className="w-[120px] h-[120px] bg-gradient-to-br from-orange-100 to-orange-50 rounded-[2rem] 
+                    flex items-center justify-center relative
+                    shadow-lg group-hover:shadow-orange-200/50 transition-shadow duration-500">
+                    <FileText className="w-16 h-16 text-orange-500" />
+                  </div>
+                </div>
+                <div className="flex-grow">
+                  <div className="flex flex-wrap items-center gap-4 mb-4">
+                    <h3 className="text-2xl font-semibold text-gray-800">Distribution de Fournitures Scolaires - Orphelinats</h3>
+                    <a 
+                      href="/activities/reports/Rapport Help and Hope Activity 2.pdf" 
+                      download
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-600 rounded-full hover:bg-orange-100 transition-colors"
+                    >
+                      <Download className="w-4 h-4" />
+                      <span>Télécharger le Rapport</span>
+                    </a>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-4 mb-4 text-gray-600">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-5 h-5 text-orange-500" />
+                      <span>09 Janvier 2020</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-5 h-5 text-orange-500" />
+                      <span>70 Participants (50 Enfants)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-5 h-5 text-orange-500" />
+                      <span>Guinée</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 text-gray-600">
+                    <p className="leading-relaxed">
+                      La première activité historique de Help and Hope, axée sur l'éducation des enfants orphelins et démunis. 
+                      Distribution de manuels scolaires (français, histoire, géographie, sciences) et fournitures, accompagnée 
+                      d'une séance de lecture et remise de prix d'excellence.
+                    </p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                      <div>
+                        <h4 className="font-semibold text-gray-800 mb-2">Impact</h4>
+                        <ul className="list-disc list-inside space-y-1">
+                          <li>Soutien éducatif aux orphelins</li>
+                          <li>Amélioration du niveau scolaire</li>
+                          <li>Réduction de la délinquance</li>
+                          <li>Promotion de la lecture</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-800 mb-2">Ressources Mobilisées</h4>
+                        <ul className="list-disc list-inside space-y-1">
+                          <li>Budget total: 27,000,000 GNF</li>
+                          <li>Manuels et fournitures distribués</li>
+                          <li>Partenariat: PAM, RTG</li>
+                          <li>Support du Ministère de l'Action Sociale</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Featured Activity - Magic Park Excursion */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="col-span-1 flex flex-col md:flex-row gap-6 p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] 
+                  shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(59,130,246,0.25)]
+                  transform hover:-translate-y-2 transition-all duration-500 group
+                  border border-white/50"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="relative flex-shrink-0">
+                  <div className="absolute -inset-4 bg-green-100 rounded-full opacity-50 blur-2xl group-hover:opacity-70 transition-opacity duration-500" />
+                  <div className="w-[120px] h-[120px] bg-gradient-to-br from-green-100 to-green-50 rounded-[2rem] 
+                    flex items-center justify-center relative
+                    shadow-lg group-hover:shadow-green-200/50 transition-shadow duration-500">
+                    <FileText className="w-16 h-16 text-green-500" />
+                  </div>
+                </div>
+                <div className="flex-grow">
+                  <div className="flex flex-wrap items-center gap-4 mb-4">
+                    <h3 className="text-2xl font-semibold text-gray-800">Excursion Magic Park</h3>
+                    <a 
+                      href="/activities/reports/Rapport Help and Hope Activity 3 (1).pdf" 
+                      download
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors"
+                    >
+                      <Download className="w-4 h-4" />
+                      <span>Télécharger le Rapport</span>
+                    </a>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-4 mb-4 text-gray-600">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-5 h-5 text-green-500" />
+                      <span>01 Janvier 2021</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-5 h-5 text-green-500" />
+                      <span>110 Participants (100 Enfants)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-5 h-5 text-green-500" />
+                      <span>Magic Parc, Guinée</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 text-gray-600">
+                    <p className="leading-relaxed">
+                      Pour débuter l'année 2021, Help and Hope a organisé une journée de divertissement au Magic Parc. 
+                      Les enfants ont pu profiter des diverses attractions (balançoires, toboggans, jeux) sous la supervision 
+                      attentive des membres de l'ONG, assurant à la fois leur amusement et leur sécurité.
+                    </p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                      <div>
+                        <h4 className="font-semibold text-gray-800 mb-2">Impact</h4>
+                        <ul className="list-disc list-inside space-y-1">
+                          <li>Divertissement et détente</li>
+                          <li>Socialisation entre enfants</li>
+                          <li>Découverte de nouveaux jeux</li>
+                          <li>Enrichissement culturel</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-800 mb-2">Ressources Mobilisées</h4>
+                        <ul className="list-disc list-inside space-y-1">
+                          <li>Budget total: 6,000,000 GNF</li>
+                          <li>Transport en autobus</li>
+                          <li>Équipements (T-shirts, badges)</li>
+                          <li>Partenariat: Guinée Énergie</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Assembly Members */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="col-span-1 p-8 bg-gradient-to-br from-purple-50 to-white backdrop-blur-sm rounded-[2rem] 
+                  shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(147,51,234,0.25)]
+                  transform hover:-translate-y-2 transition-all duration-500 group
+                  border border-purple-100/50"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="flex flex-col items-center text-center mb-8">
+                  <div className="relative mb-6">
+                    <div className="absolute -inset-4 bg-purple-100 rounded-full opacity-50 blur-2xl group-hover:opacity-70 transition-opacity duration-500" />
+                    <div className="w-[120px] h-[120px] bg-gradient-to-br from-purple-100 to-purple-50 rounded-[2rem] 
+                      flex items-center justify-center relative
+                      shadow-lg group-hover:shadow-purple-200/50 transition-shadow duration-500">
+                      <Users className="w-16 h-16 text-purple-500" />
+                    </div>
+                  </div>
+                  <h3 className="text-3xl font-dancing-script text-purple-600 mb-2">Membres de l'Assemblée</h3>
+                  <p className="text-gray-600">Les membres dévoués qui guident notre mission avec passion et détermination</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    "Sory Mane Traore",
+                    "Ndiame Mbaye",
+                    "Nounke Kouyaté",
+                    "Mariame Balde",
+                    "Aissatou Diallo",
+                    "Kadiatou Kebe",
+                    "Amadou Oury Bangoura",
+                    "Aminatou Cherif Diallo",
+                    "Mamyan Keita",
+                    "Moussa Fofana",
+                    "Mohamed Sy Savane",
+                    "Cheick Oumar Keita",
+                    "Mory Sano",
+                    "Fanta Fofana",
+                    "Ibrahima Bella Sow",
+                    "Saran Camara"
+                  ].map((member, index) => (
+                    <motion.div
+                      key={member}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="bg-white/80 p-4 rounded-xl shadow-sm hover:shadow-md 
+                        transition-all duration-300 hover:bg-purple-50/50 group/member
+                        border border-purple-100/20"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-purple-400 group-hover/member:scale-150 transition-transform" />
+                        <span className="text-gray-700 group-hover/member:text-purple-700 transition-colors">
+                          {member}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          )}
+
+          {/* Photo Album */}
+          {activeTab === 'album' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3, 4, 5, 6].map((index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="aspect-square relative overflow-hidden rounded-[2rem] 
+                    shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(59,130,246,0.25)]
+                    transform hover:-translate-y-2 transition-all duration-500 group
+                    border border-white/50"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <Image
+                    src={`/activities/activity${index}.jpg`}
+                    alt={`Activity ${index}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                    quality={85}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-100/20 to-orange-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </motion.div>
+              ))}
+            </div>
+          )}
+
+          {/* News */}
+          {activeTab === 'news' && (
+            <div className="space-y-8">
+              {[1, 2, 3].map((index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-6 p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] 
+                    shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(59,130,246,0.25)]
+                    transform hover:-translate-y-2 transition-all duration-500 group
+                    border border-white/50"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="relative">
+                    <div className="absolute -inset-4 bg-green-100 rounded-full opacity-50 blur-2xl group-hover:opacity-70 transition-opacity duration-500" />
+                    <div className="w-[88px] h-[88px] bg-gradient-to-br from-green-100 to-green-50 rounded-[1.5rem] 
+                      flex items-center justify-center flex-shrink-0 relative
+                      shadow-lg group-hover:shadow-green-200/50 transition-shadow duration-500">
+                      <Newspaper className="w-[44px] h-[44px] text-green-500" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4 text-gray-800">Actualité {index}</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Placeholder pour le contenu de l'actualité {index}
+                    </p>
+                    <div className="mt-4 flex items-center text-sm text-gray-500">
+                      <span className="mr-4">📅 Date</span>
+                      <span>👤 Auteur</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </motion.div>
+      </div>
     </main>
   );
 }

@@ -1,30 +1,104 @@
 'use client';
 
+import { motion, useScroll, useTransform } from 'framer-motion';
 import {
-  Heart,
-  Users,
-  Leaf,
-  Send,
-  Instagram,
-  Facebook,
-  Mail,
-  Menu,
-  Globe,
-  Award,
   Info,
+  Heart,
   Target,
+  Users,
+  Globe,
   Lightbulb,
   Building2,
-  Phone
+  Phone,
+  FileText,
+  ArrowRight,
+  Menu,
+  Send,
+  Award,
+  Leaf,
+  Instagram,
+  Facebook,
+  Mail
 } from "lucide-react";
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useCounter } from '../hooks/useCounter';
 import { useRef, useState } from 'react';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 }
+};
+
+const CounterCard = ({ 
+  number, 
+  label, 
+  sublabel, 
+  color, 
+  delay 
+}: { 
+  number: number; 
+  label: string; 
+  sublabel: string; 
+  color: 'blue' | 'orange' | 'green'; 
+  delay: number; 
+}) => {
+  const count = useCounter(number);
+  const colors = {
+    blue: {
+      bg: 'bg-gradient-to-br from-blue-500 to-blue-600',
+      glow: 'from-blue-400 to-blue-600',
+      ring: 'ring-blue-400/30',
+      icon: 'text-blue-100',
+      border: 'border-blue-400/20',
+    },
+    orange: {
+      bg: 'bg-gradient-to-br from-orange-500 to-orange-600',
+      glow: 'from-orange-400 to-orange-600',
+      ring: 'ring-orange-400/30',
+      icon: 'text-orange-100',
+      border: 'border-orange-400/20',
+    },
+    green: {
+      bg: 'bg-gradient-to-br from-green-500 to-green-600',
+      glow: 'from-green-400 to-green-600',
+      ring: 'ring-green-400/30',
+      icon: 'text-green-100',
+      border: 'border-green-400/20',
+    },
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay }}
+      className={`relative p-8 ${colors[color].bg} rounded-[2rem] 
+        shadow-lg hover:shadow-2xl transition-all duration-500
+        ring-1 ${colors[color].ring}
+        border ${colors[color].border} group
+        backdrop-blur-sm`}
+    >
+      <div className={`absolute -inset-1 bg-gradient-to-r ${colors[color].glow} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity rounded-[2rem]`} />
+      <div className="relative flex items-center gap-6">
+        <div className={`w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center ${colors[color].icon}`}>
+          {color === 'blue' && <Users className="w-8 h-8" />}
+          {color === 'orange' && <Heart className="w-8 h-8" />}
+          {color === 'green' && <Users className="w-8 h-8" />}
+        </div>
+        <div>
+          <motion.h3 
+            className="text-5xl font-bold text-white mb-1"
+          >
+            {count}+
+          </motion.h3>
+          <p className="text-white/90 font-medium">{label}</p>
+          <p className="text-sm text-white/70">{sublabel}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 export default function HomePage() {
@@ -255,75 +329,190 @@ export default function HomePage() {
         </motion.div>
       </motion.section>
 
-      {/* About & Mission Section */}
-      <div className="max-w-6xl mx-auto py-16 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+      {/* About and Vision Section */}
+      <div className="container mx-auto px-4 py-20">
+        <div className="space-y-12">
+          {/* About Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-[2rem] p-12
-              bg-gradient-to-br from-blue-50/90 to-white/80 backdrop-blur-sm
-              shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(59,130,246,0.25)]
-              transform hover:-translate-y-2 transition-all duration-500 group
-              border border-blue-100/50"
-            whileHover={{ scale: 1.02 }}
+            className="col-span-1 flex flex-col md:flex-row gap-6 p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] 
+              shadow-[0_10px_40px_rgb(0,0,0,0.15)] 
+              border border-white/50"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-100 to-blue-50 opacity-50 blur-3xl" />
-            <div className="relative">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 text-blue-600">
-                  <Info />
-                </div>
-                <h2 className="text-4xl font-dancing-script text-blue-600">À Propos</h2>
+            <div className="relative flex-shrink-0">
+              <div className="absolute -inset-4 bg-blue-100 rounded-full opacity-50 blur-2xl" />
+              <div className="w-[120px] h-[120px] bg-gradient-to-br from-blue-100 to-blue-50 rounded-[2rem] 
+                flex items-center justify-center relative
+                shadow-lg">
+                <FileText className="w-16 h-16 text-blue-500" />
               </div>
-              <p className="text-gray-600 leading-relaxed">
-                Help &amp; Hope est une organisation à but non lucratif dédiée à créer un changement 
-                positif dans plusieurs secteurs de la société. Nous croyons en la force de l&#39;action 
-                collective et des solutions durables pour répondre aux défis les plus pressants 
-                auxquels nos communautés font face aujourd&#39;hui.
-              </p>
-              <div className="flex gap-6 mt-8">
-                <Heart className="w-8 h-8 text-blue-500/70" />
-                <Users className="w-8 h-8 text-blue-500/70" />
-                <Globe className="w-8 h-8 text-blue-500/70" />
+            </div>
+            <div className="flex-grow">
+              <h2 className="text-3xl font-dancing-script text-blue-600 mb-6">À Propos de Nous</h2>
+              
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <p>
+                  Help & Hope est une organisation à but non lucratif dédiée à créer un changement 
+                  positif dans plusieurs secteurs de la société. Nous croyons en la force de l'action 
+                  collective et des solutions durables pour répondre aux défis les plus pressants 
+                  auxquels nos communautés font face aujourd'hui.
+                </p>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">Notre Structure</h3>
+                  <p>
+                    Notre organisation est dirigée par une assemblée générale composée de membres dévoués, répartis à travers le monde, 
+                    de la Guinée aux États-Unis, en passant par le Canada, la France, et plusieurs autres pays. Cette diversité 
+                    internationale enrichit notre perspective et renforce notre capacité d'action.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">Nos Actions</h3>
+                  <p>
+                    Nos activités touchent différents aspects de la vie communautaire :
+                  </p>
+                  <ul className="list-disc list-inside mt-2 space-y-2 ml-4">
+                    <li>Distribution de kits sanitaires dans les prisons</li>
+                    <li>Fourniture de matériel scolaire aux orphelinats</li>
+                    <li>Organisation d'activités récréatives pour les enfants</li>
+                    <li>Soutien aux populations vulnérables</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">Notre Engagement</h3>
+                  <p>
+                    Chaque initiative est menée avec passion et détermination, soutenue par une équipe internationale de 
+                    professionnels et de bénévoles. Notre force réside dans notre capacité à mobiliser des ressources et 
+                    à créer des partenariats durables pour maximiser notre impact social.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.div>
 
+          {/* Vision Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-[2rem] p-12
-              bg-gradient-to-br from-blue-50/90 to-white/80 backdrop-blur-sm
-              shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(59,130,246,0.25)]
+            className="col-span-1 flex flex-col md:flex-row gap-6 p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] 
+              shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(234,88,12,0.25)]
               transform hover:-translate-y-2 transition-all duration-500 group
-              border border-blue-100/50"
+              border border-white/50"
             whileHover={{ scale: 1.02 }}
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-100 to-blue-50 opacity-50 blur-3xl" />
-            <div className="relative">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 text-blue-600">
-                  <Target />
-                </div>
-                <h2 className="text-4xl font-dancing-script text-blue-600">Notre Vision</h2>
+            <div className="relative flex-shrink-0">
+              <div className="absolute -inset-4 bg-orange-100 rounded-full opacity-50 blur-2xl group-hover:opacity-70 transition-opacity duration-500" />
+              <div className="w-[120px] h-[120px] bg-gradient-to-br from-orange-100 to-orange-50 rounded-[2rem] 
+                flex items-center justify-center relative
+                shadow-lg group-hover:shadow-orange-200/50 transition-shadow duration-500">
+                <Target className="w-16 h-16 text-orange-500" />
               </div>
-              <p className="text-gray-600 leading-relaxed">
-                La vision de l&#39;ONG est de contribuer à la construction d&#39;un monde où toute personne 
-                puisse se satisfaire des besoins fondamentaux de base inhérents à l&#39;être humain 
-                sans trop de dépendances.
-              </p>
-              <div className="flex gap-6 mt-8">
-                <Lightbulb className="w-8 h-8 text-blue-500/70" />
-                <Building2 className="w-8 h-8 text-blue-500/70" />
-                <Heart className="w-8 h-8 text-blue-500/70" />
+            </div>
+            <div className="flex-grow">
+              <h2 className="text-3xl font-dancing-script text-orange-600 mb-6">Notre Vision</h2>
+              
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <p>
+                  La vision de l'ONG est de contribuer à la construction d'un monde où toute personne 
+                  puisse se satisfaire des besoins fondamentaux de base inhérents à l'être humain 
+                  sans trop de dépendances.
+                </p>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">Nos Objectifs</h3>
+                  <p>
+                    Pour réaliser cette vision, nous nous engageons à :
+                  </p>
+                  <ul className="list-disc list-inside mt-2 space-y-2 ml-4">
+                    <li>Améliorer l'accès à l'éducation et à la formation professionnelle</li>
+                    <li>Renforcer les systèmes de santé et de protection sociale</li>
+                    <li>Promouvoir la durabilité environnementale</li>
+                    <li>Favoriser l'inclusion sociale et la cohésion communautaire</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">Notre Approche</h3>
+                  <p>
+                    Pour atteindre ces objectifs, nous adoptons une approche :
+                  </p>
+                  <ul className="list-disc list-inside mt-2 space-y-2 ml-4">
+                    <li>Collaborative avec les communautés locales</li>
+                    <li>Basée sur des partenariats stratégiques</li>
+                    <li>Orientée vers des solutions durables</li>
+                    <li>Centrée sur l'autonomisation des bénéficiaires</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
       </div>
+
+      {/* Impact Counter Section */}
+      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-50/50 to-white">
+        <div className="absolute inset-0 bg-grid-blue/10 bg-grid-blue-lg/10" />
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-dancing-script text-blue-600 mb-4">Notre Impact</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Chaque action compte, chaque vie touchée fait la différence. Découvrez l'impact de nos activités 
+              à travers les chiffres qui témoignent de notre engagement.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <CounterCard
+              number={110}
+              label="Participants au Magic Parc"
+              sublabel="Janvier 2021"
+              color="blue"
+              delay={0}
+            />
+            <CounterCard
+              number={70}
+              label="Enfants Soutenus"
+              sublabel="Distribution de Fournitures"
+              color="orange"
+              delay={0.1}
+            />
+            <CounterCard
+              number={16}
+              label="Membres Actifs"
+              sublabel="Assemblée Générale"
+              color="green"
+              delay={0.2}
+            />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            <Link
+              href="/activities"
+              className="group inline-flex items-center gap-2 px-6 py-3 bg-blue-50 text-blue-600 
+                rounded-full hover:bg-blue-100 transition-colors duration-300
+                border border-blue-200/50 hover:border-blue-300/50"
+            >
+              <span>Voir Toutes Nos Activités</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
       {/* What We Do Section */}
       <div className="max-w-6xl mx-auto py-16">
@@ -354,10 +543,15 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Protection des Orphelins</h3>
               <p className="text-gray-600 leading-relaxed">
-                Nous nous engageons à donner de l&#39;espoir aux enfants vulnérables, notamment les orphelins. 
-                En collaboration avec des partenaires locaux, nous développons des programmes de soutien pour 
-                améliorer leurs conditions de vie et leur offrir un avenir meilleur.
+                Nous fournissons soutien, soins et amour aux enfants orphelins, en veillant à ce qu&#39;ils aient accès à l&#39;éducation,
+                aux soins de santé et à un environnement propice à leur épanouissement. Nos programmes se concentrent sur:
               </p>
+              <ul className="list-none space-y-3 text-gray-600">
+                <li>Des foyers sûrs et bienveillants</li>
+                <li>Soutien éducatif et mentorat</li>
+                <li>Soutien médical et psychologique</li>
+                <li>Développement des compétences de vie</li>
+              </ul>
             </div>
           </motion.div>
 
@@ -383,6 +577,12 @@ export default function HomePage() {
                 Nos programmes éducatifs visent à créer des opportunités d&#39;apprentissage durables et à améliorer les 
                 conditions de vie de la couche juvénile.
               </p>
+              <ul className="list-none space-y-3 text-gray-600">
+                <li>Éducation primaire et secondaire de qualité</li>
+                <li>Programmes de formation professionnelle</li>
+                <li>Initiatives de littératie numérique</li>
+                <li>Formation et développement des enseignants</li>
+              </ul>
             </div>
           </motion.div>
 
@@ -408,6 +608,12 @@ export default function HomePage() {
                 Nos initiatives de santé visent à améliorer l&#39;accès aux soins essentiels et à promouvoir le 
                 bien-être des communautés les plus vulnérables.
               </p>
+              <ul className="list-none space-y-3 text-gray-600">
+                <li>Services de santé primaires</li>
+                <li>Soins médicaux spécialisés</li>
+                <li>Éducation et sensibilisation à la santé</li>
+                <li>Programmes de santé communautaire</li>
+              </ul>
             </div>
           </motion.div>
 
@@ -433,6 +639,12 @@ export default function HomePage() {
                 avec une attention particulière aux immigrants. Nos programmes offrent un accompagnement 
                 juridique et social pour faciliter leur adaptation.
               </p>
+              <ul className="list-none space-y-3 text-gray-600">
+                <li>Assistance administrative et juridique</li>
+                <li>Programmes linguistiques et culturels</li>
+                <li>Formation professionnelle et placement</li>
+                <li>Soutien vers la vie communautaire</li>
+              </ul>
             </div>
           </motion.div>
 
@@ -458,6 +670,12 @@ export default function HomePage() {
                 générations futures. Nos programmes de sensibilisation encouragent le développement durable 
                 et la responsabilité environnementale au sein des communautés.
               </p>
+              <ul className="list-none space-y-3 text-gray-600">
+                <li>Conservation et protection de la biodiversité</li>
+                <li>Pratiques durables et énergies renouvelables</li>
+                <li>Éducation et sensibilisation environnementale</li>
+                <li>Initiatives et projets communautaires</li>
+              </ul>
             </div>
           </motion.div>
         </div>
@@ -504,12 +722,36 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            {/* Secretary General */}
+            {/* Co-Founder/VP */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
+              className="group"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-lg mb-4 aspect-[3/4]">
+                <Image
+                  src="/team/team5.jpg"
+                  alt="Moussa Fode"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-gray-800">Moussa Fode</h3>
+                <p className="text-blue-600 mb-2">Co-Founder/VP</p>
+                <p className="text-gray-600 italic">&ldquo;Making them smile is part of my success&rdquo;</p>
+              </div>
+            </motion.div>
+
+            {/* Secretary General */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
               className="group"
             >
               <div className="relative rounded-2xl overflow-hidden shadow-lg mb-4 aspect-[3/4]">
@@ -533,7 +775,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.4 }}
               className="group"
             >
               <div className="relative rounded-2xl overflow-hidden shadow-lg mb-4 aspect-[3/4]">
@@ -557,7 +799,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.5 }}
               className="group"
             >
               <div className="relative rounded-2xl overflow-hidden shadow-lg mb-4 aspect-[3/4]">
@@ -573,30 +815,6 @@ export default function HomePage() {
                 <h3 className="text-xl font-semibold text-gray-800">Cheick Oumar Keita</h3>
                 <p className="text-blue-600 mb-2">Supervisor/Recruiter</p>
                 <p className="text-gray-600 italic">&ldquo;We all deserve to smile and together we can&rdquo;</p>
-              </div>
-            </motion.div>
-
-            {/* Moussa Fode */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="group"
-            >
-              <div className="relative rounded-2xl overflow-hidden shadow-lg mb-4 aspect-[3/4]">
-                <Image
-                  src="/team/team5.jpg"
-                  alt="Moussa Fode"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              <div className="text-center">
-                <h3 className="text-xl font-semibold text-gray-800">Moussa Fode</h3>
-                <p className="text-blue-600 mb-2">Co-Founder/VP</p>
-                <p className="text-gray-600 italic">&ldquo;Making them smile is part of my success&rdquo;</p>
               </div>
             </motion.div>
           </motion.div>
@@ -757,17 +975,15 @@ export default function HomePage() {
               }}
               className="w-full md:w-1/2 mt-8 md:mt-0">
               <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform group">
-                <div className="w-full h-full relative">
-                  <Image
-                    src="/orphans.jpg"
-                    alt="Orphan Care"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    quality={85}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100/10 to-green-50/10 mix-blend-multiply" />
-                </div>
+                <Image
+                  src="/orphans.jpg"
+                  alt="Orphan Care"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  quality={85}
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-100/10 to-green-50/10 mix-blend-multiply" />
               </div>
             </motion.div>
           </div>
