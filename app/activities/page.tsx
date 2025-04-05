@@ -434,39 +434,29 @@ export default function ActivitiesPage() {
 
           {/* News */}
           {activeTab === 'news' && (
-            <div className="space-y-8">
-              {[1, 2, 3].map((index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="flex items-start gap-6 p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] 
-                    shadow-[0_10px_40px_rgb(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgb(59,130,246,0.25)]
-                    transform hover:-translate-y-2 transition-all duration-500 group
-                    border border-white/50"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div className="relative">
-                    <div className="absolute -inset-4 bg-green-100 rounded-full opacity-50 blur-2xl group-hover:opacity-70 transition-opacity duration-500" />
-                    <div className="w-[88px] h-[88px] bg-gradient-to-br from-green-100 to-green-50 rounded-[1.5rem] 
-                      flex items-center justify-center flex-shrink-0 relative
-                      shadow-lg group-hover:shadow-green-200/50 transition-shadow duration-500">
-                      <Newspaper className="w-[44px] h-[44px] text-green-500" />
+            <div className="grid grid-cols-1 gap-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="col-span-1 p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] 
+                  shadow-[0_10px_40px_rgb(0,0,0,0.15)]
+                  border border-white/50 text-center"
+              >
+                <div className="max-w-2xl mx-auto">
+                  <div className="relative flex-shrink-0 mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-green-50 rounded-2xl 
+                      flex items-center justify-center mx-auto
+                      shadow-lg">
+                      <Newspaper className="w-8 h-8 text-green-500" />
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-4 text-gray-800">Actualité {index}</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Placeholder pour le contenu de l&apos;actualité {index}
-                    </p>
-                    <div className="mt-4 flex items-center text-sm text-gray-500">
-                      <span className="mr-4">📅 Date</span>
-                      <span>👤 Auteur</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-4">Aucune actualité pour le moment</h3>
+                  <p className="text-gray-600">
+                    Revenez bientôt pour découvrir les dernières actualités de Help and Hope.
+                  </p>
+                </div>
+              </motion.div>
             </div>
           )}
         </motion.div>
