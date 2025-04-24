@@ -156,16 +156,15 @@ export default function HomePage() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}>
-              <Link
+              <a
                 href="https://helpandhope.gumroad.com/l/uhpiq"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2.5 rounded-full
                   hover:shadow-lg hover:from-blue-500 hover:to-blue-600 transition-all duration-300
-                  flex items-center gap-2 font-medium">
+                  flex items-center gap-2 font-medium"
+              >
                 <Heart className="w-4 h-4" />
-                <span>Faire un Don</span>
-              </Link>
+                <span>Make a donation</span>
+              </a>
             </motion.div>
 
             {/* Mobile Menu Button */}
@@ -207,18 +206,17 @@ export default function HomePage() {
                 </Link>
               ))}
               <div className="px-4 pt-2">
-                <Link
+                <a
                   href="https://helpandhope.gumroad.com/l/uhpiq"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2.5 rounded-full
+                  className="gumroad-button bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2.5 rounded-full
                     hover:shadow-lg hover:from-blue-500 hover:to-blue-600 transition-all duration-300
                     flex items-center gap-2 font-medium w-full justify-center"
+                  data-gumroad-overlay="true"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Heart className="w-4 h-4" />
-                  <span>Faire un Don</span>
-                </Link>
+                  <span>Make a donation</span>
+                </a>
               </div>
             </nav>
           </motion.div>
@@ -250,16 +248,20 @@ export default function HomePage() {
               </Link>
             ))}
             <div className="pt-4 border-t border-gray-100">
-              <Link
+              <a
                 href="https://helpandhope.gumroad.com/l/uhpiq"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-3 rounded-full
                   hover:shadow-lg hover:from-blue-500 hover:to-blue-600 transition-all duration-300
-                  flex items-center justify-center gap-2 font-medium">
+                  flex items-center justify-center gap-2 font-medium"
+                data-gumroad-overlay="true"
+                data-gumroad-single-product="true"
+                data-gumroad-purchase-text="Make a donation"
+              >
                 <Heart className="w-4 h-4" />
-                <span>Faire un Don</span>
-              </Link>
+                <span>Make a donation</span>
+              </a>
             </div>
           </div>
         </nav>

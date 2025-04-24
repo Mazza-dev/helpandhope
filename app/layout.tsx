@@ -17,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script src="https://gumroad.com/js/gumroad.js"></script>
+      </head>
       <body className={`${inter.variable} ${dancingScript.variable} font-sans`}>
         {children}
       </body>
