@@ -1,13 +1,26 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FileText, Image as ImageIcon, Newspaper, Download, Calendar, Users, MapPin, ArrowLeft } from 'lucide-react';
 
 export default function ActivitiesPage() {
+  const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState('summaries');
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   const tabs = [
     { 
