@@ -59,7 +59,42 @@ export default function ActivitiesPage() {
       {/* Fixed Navigation Header */}
       <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg shadow-md border-b border-blue-100/50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+          {/* Mobile Header */}
+          <div className="lg:hidden py-4">
+            <div className="flex items-center justify-between">
+              <Link 
+                href="/"
+                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                <span className="font-medium">Retour</span>
+              </Link>
+              <h1 className="text-3xl font-dancing-script text-blue-600">Nos Activités</h1>
+            </div>
+            <nav className="flex justify-between mt-4 bg-gray-50/50 p-2 rounded-xl">
+              {tabs.map((tab) => {
+                const colors = getTabColors(tab.color);
+                const Icon = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all duration-300 flex-1
+                      ${activeTab === tab.id
+                        ? `bg-gradient-to-br ${colors.gradient} ${colors.text} shadow-lg ${colors.shadow}`
+                        : 'text-gray-600 hover:bg-white hover:text-blue-600'
+                      }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="text-xs">{tab.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+
+          {/* Desktop Header */}
+          <div className="hidden lg:flex items-center justify-between h-20">
             <div className="flex items-center gap-6">
               <Link 
                 href="/"
