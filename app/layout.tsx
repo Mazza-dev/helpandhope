@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Dancing_Script } from "next/font/google";
+import { Inter, Dancing_Script } from 'next/font/google';
+import Script from 'next/script';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="https://gumroad.com/js/gumroad.js"></script>
+        <Script
+          src="https://gumroad.com/js/gumroad.js"
+          strategy="lazyOnload"
+        />
       </head>
       <body className={`${inter.variable} ${dancingScript.variable} font-sans`}>
         {children}
